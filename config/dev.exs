@@ -8,7 +8,7 @@ config :gis_tutorial, GisTutorial.Repo,
   database: "gis_tutorial_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  types: GisTutorial.PostgresTypes
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -23,7 +23,7 @@ config :gis_tutorial, GisTutorialWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "GZQjQEnjfrfmlTG3xOAvBbVXRYpkxj4NqBZPF0X6zWSIVKy1PuFGiSrdxDZWNhWN",
+  secret_key_base: "bN6Em6/ccwz+/MWzqMUt7OGkFBspOosmmyee0Z5BgeXknkXFuachUS3VigE8aWAd",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
