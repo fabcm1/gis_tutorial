@@ -11,40 +11,68 @@
 # and so on) as they will fail if something goes wrong.
 
 alias GisTutorial.Repo
-alias GisTutorial.Locations.Point
-
-p1 = %Point{name: "A", geom: %Geo.Point{coordinates: {30, -60}, srid: 4326}}
-p2 = %Point{name: "B", geom: %Geo.Point{coordinates: {30, 60}, srid: 4326}}
-p3 = %Point{name: "C", geom: %Geo.Point{coordinates: {-30, 0}, srid: 4326}}
-Repo.insert!(p1)
-Repo.insert!(p2)
-Repo.insert!(p3)
-
-o = %Point{name: "O", geom: %Geo.Point{coordinates: {0, 0}, srid: 4326}}
-
 alias GisTutorial.Locations
+alias GisTutorial.Locations.{Place, Neighborhood}
 
-Locations.distances(o)
+Repo.insert!(%Place{
+  name: "Hospital e Maternidade Mogi Mater",
+  geom: %Geo.Point{coordinates: {-23.52537944891618, -46.18896930975203}, srid: 4326}
+})
 
-# ** (FunctionClauseError) no function clause matching in GisTutorial.PostgresTypes."-inlined-Elixir.Geo.PostGIS.Extension/1-"/1
+Repo.insert!(%Place{
+  name: "Hospital Nossa Senhora Aparecida",
+  geom: %Geo.Point{coordinates: {-23.521726278775407, -46.186970608490526}, srid: 4326}
+})
 
-#     The following arguments were given to GisTutorial.PostgresTypes."-inlined-Elixir.Geo.PostGIS.Extension/1-"/1:
+Repo.insert!(%Neighborhood{
+  name: "Vila Mogi Moderno",
+  type: :district,
+  geom: %Geo.MultiPolygon{
+    coordinates: [
+      [
+        [
+          {-23.544782106648096, -46.183978127913214},
+          {-23.543072507804673, -46.183623545839474},
+          {-23.539147569965206, -46.181679910739845},
+          {-23.537293417487263, -46.18355788247104},
+          {-23.53206793807952, -46.18723502998777},
+          {-23.53023776721763, -46.18887661366245},
+          {-23.533320145592874, -46.19352557873821},
+          {-23.53546331925704, -46.19388016081163},
+          {-23.53760645802743, -46.19319726199222},
+          {-23.542687242970576, -46.18609248776149},
+          {-23.544782106648096, -46.183978127913214}
+        ]
+      ]
+    ],
+    srid: 4326
+  }
+})
 
-#         # 1
-#         %GisTutorial.Locations.Point{__meta__: #Ecto.Schema.Metadata<:built, "points">, id: nil, name: "O", geom: %Geo.Point{coordinates: {0, 0}, srid: 4326, properties: %{}}}
-
-#     (gis_tutorial 0.1.0) GisTutorial.PostgresTypes."-inlined-Elixir.Geo.PostGIS.Extension/1-"/1
-#     (gis_tutorial 0.1.0) deps/postgrex/lib/postgrex/type_module.ex:947: GisTutorial.PostgresTypes.encode_params/3
-#     (postgrex 0.16.5) lib/postgrex/query.ex:75: DBConnection.Query.Postgrex.Query.encode/3
-#     (db_connection 2.4.2) lib/db_connection.ex:1255: DBConnection.encode/5
-#     (db_connection 2.4.2) lib/db_connection.ex:1355: DBConnection.run_prepare_execute/5
-#     (db_connection 2.4.2) lib/db_connection.ex:1459: DBConnection.run/6
-#     (db_connection 2.4.2) lib/db_connection.ex:595: DBConnection.parsed_prepare_execute/5
-#     (db_connection 2.4.2) lib/db_connection.ex:587: DBConnection.prepare_execute/4
-#     (ecto_sql 3.9.0) lib/ecto/adapters/postgres/connection.ex:70: Ecto.Adapters.Postgres.Connection.prepare_execute/5
-#     (ecto_sql 3.9.0) lib/ecto/adapters/sql.ex:828: Ecto.Adapters.SQL.execute!/5
-#     (ecto_sql 3.9.0) lib/ecto/adapters/sql.ex:820: Ecto.Adapters.SQL.execute/6
-#     (ecto 3.9.1) lib/ecto/repo/queryable.ex:229: Ecto.Repo.Queryable.execute/4
-#     (ecto 3.9.1) lib/ecto/repo/queryable.ex:19: Ecto.Repo.Queryable.all/3
-#     (ecto 3.9.1) lib/ecto/repo/queryable.ex:151: Ecto.Repo.Queryable.one/3
-#     (elixir 1.14.0) lib/code.ex:1245: Code.require_file/2
+Repo.insert!(%Neighborhood{
+  name: "Vila Bela Vista",
+  type: :district,
+  geom: %Geo.MultiPolygon{
+    coordinates: [
+      [
+        [
+          {-23.52501088144549, -46.191570944297915},
+          {-23.52700954816919, -46.19154206469411},
+          {-23.52874084340199, -46.190340435064186},
+          {-23.528494922177977, -46.18818393906651},
+          {-23.52848508531946, -46.18610254491952},
+          {-23.527550580407027, -46.18659607136674},
+          {-23.52702922215094, -46.1872398015153},
+          {-23.526149723910848, -46.18768196282689},
+          {-23.525585095526974, -46.18831209905115},
+          {-23.525138643440496, -46.188440990571124},
+          {-23.524475035235902, -46.18874260678294},
+          {-23.524328260360896, -46.18976945510222},
+          {-23.524546632676216, -46.19166697706859},
+          {-23.52501088144549, -46.191570944297915}
+        ]
+      ]
+    ],
+    srid: 4326
+  }
+})
