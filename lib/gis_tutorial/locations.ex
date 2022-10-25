@@ -38,12 +38,12 @@ defmodule GisTutorial.Locations do
     |> Repo.all()
   end
 
-  # def distances(geom) do
-  #   query = from p in Place, select: st_distance_in_meters(p.geom, ^geom.geom)
+  def distances(p) do
+    query = from pl in Place, select: st_distance_in_meters(pl.geom, ^p.geom)
 
-  #   query
-  #   |> Repo.all()
-  # end
+    query
+    |> Repo.all()
+  end
 
   def dump() do
     query = from p in Place, select: [p.id, p.name, st_as_text(p.geom)]

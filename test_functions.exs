@@ -7,3 +7,5 @@ alias GisTutorial.Locations
 IO.inspect(Locations.find_neighborhoods(h1))
 
 IO.inspect(Locations.find_neighborhoods(h2))
+
+IO.inspect(Locations.distances(h1))
