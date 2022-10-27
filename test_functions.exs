@@ -2,13 +2,15 @@ alias GisTutorial.Repo
 alias GisTutorial.Locations.{Place, Neighborhood}
 alias GisTutorial.Locations
 
-[n1, n2] = Repo.all(Neighborhood)
+# [h1, h2] = Repo.all(Place)
 
 # IO.inspect(Locations.find_neighborhoods(h1))
 
 # IO.inspect(Locations.find_neighborhoods(h2))
 
 # IO.inspect(Locations.distances(h1))
+
+[n1, n2] = Repo.all(Neighborhood)
 
 Ecto.Adapters.SQL.query!(
   Repo,
